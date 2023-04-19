@@ -1,0 +1,51 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.signup {
+    position: absolute;
+    right: 10px;
+}
+
+.signin {
+    position: absolute;
+    right: 155px;
+}
+
+.profil {
+    position: absolute;
+    right: 25px;
+    
+}
+
+.language {
+    padding-top: -18px;
+    position: absolute;
+    right: 165px;
+}
+
+.backgroundImage {
+    background-image: url(https://themes.potenzaglobalsolutions.com/html/cardealer/revolution/assets/3176d-road-bg.jpg);
+}
+
+.hovver:hover {
+    
+    color: lawngreen;
+}
+
+

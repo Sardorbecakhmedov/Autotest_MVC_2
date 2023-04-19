@@ -1,0 +1,52 @@
+﻿
+
+<h1 style="color: antiquewhite; text-align: center">Foydalanuvchilar orasida savollarga  </h1>
+<h1 style="color: antiquewhite; text-align: center"> Eng ko'p to'g'ri javob berganlar <span style="color: lawngreen">top 10 taligi </span>  </h1>
+<br/>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+    th, td {
+        border: 1px solid #a52a2a;
+        padding: 0.5rem;
+        text-align: center;
+    }
+    thead {
+        background-color: #40e0d0;
+    }
+    th {
+        font-weight: bold;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+
+@{
+    var users = ViewBag.Users;
+    <table >
+        <thead>
+        <tr class="btn-outline-primary">
+            <th>Foydalanuvchi</th>
+            <th>Jami to'g'ri ishlagan javoblari soni</th>
+            <th>Umumiy savollar soni</th>
+        </tr>
+        </thead>
+
+        @foreach (var user in users)
+        { 
+            <tbody style="color: antiquewhite">
+            <td>@user.UserName</td>
+            <td>@user.TotalCorrectAnswerCount</td>
+            <td>700</td>
+            </tbody>
+        }
+       
+    </table>
+}

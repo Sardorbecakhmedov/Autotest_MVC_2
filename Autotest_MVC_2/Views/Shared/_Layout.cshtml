@@ -1,0 +1,95 @@
+﻿@using Autotest_MVC_2.Services.UserServices
+@inject UserService UserService 
+<!DOCTYPE html>
+
+<html lang="en">
+    <head >
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>@ViewData["Title"] - Autotest_ASR</title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+        <link rel="stylesheet" href="~/css/Home/index.css" asp-append-version="true"/>
+        <link rel="stylesheet" href="~/css/Home/signup.css" asp-append-version="true"/>
+        <link rel="stylesheet" href="~/Autotest_MVC_2.styles.css" asp-append-version="true"/>
+    </head>
+    <body class="backgroundImage">
+    <header>
+        <nav style="background: #00ced1;" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
+            <div class="container-fluid" >
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <span style=" border: 2px solid transparent; background-color: black; color: lawngreen"> AUTOTEST_ASR </span> </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark; hovver" asp-area="" asp-controller="Home" asp-action="Index">Asosiy_sahifa</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark; hovver" asp-area="" asp-controller="Question" asp-action="ShowTickets">Test_biletlari</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-dark;  hovver" asp-area="" asp-controller="User" asp-action="Rating">Reyting</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark; hovver" asp-area="" asp-controller="Question" asp-action="Exam">Test_imtihoni</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link text-dark; hovver" asp-area="" asp-controller="Home" asp-action="About">Dastur_haqida</a>
+                        </li>
+
+                        <div>
+
+                            @if (UserService.GetCurrentUser(Context) != null)
+                            {
+                                <li class="nav-item signin profil">
+                                    <a class="nav-link text-dark btn-danger" asp-area="" asp-controller="User" asp-action="Profile">Mening Profilim</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item signin">
+                                    <a class="nav-link text-dark btn btn-danger"style="color: crimson" asp-area="" asp-controller="Registration" asp-action="SignIn">Tizimga kirish</a>
+                                </li>
+                                <li class="nav-item signup" >
+                                    <a class="nav-link text-dark btn btn-danger"style="color: crimson" asp-area="" asp-controller="Registration" asp-action="SignUp">Ro'yxatdan o'tish</a>
+                                </li>
+                            }
+                            
+                        </div>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted"style="background: #00ced1;">
+        <div class="container" style="color: white;
+                                      font-weight: 700;
+                                      font-size: 1.3rem;">
+            &copy; 2023 - <span style="color: crimson"> AUTOTEST_ASR </span> - <a asp-area="" asp-controller="User" asp-action="Profile">Mening Profilim</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    </body>
+</html>
+
+    

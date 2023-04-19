@@ -1,0 +1,180 @@
+﻿@using Auto_test.Library.Models.Tickets
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Auto_test.Library.Models.UserModels.User
+
+
+@if (!Model.IsExam)
+{
+    <h1 class="text-center; text-light" >Bilet raqami:  @(Model.CurrentTicketIndex + 1)</h1>
+}
+
+<style>
+    .focus1:focus {
+        transform: translateY(8px);
+        background-color: blue !important
+    }
+    .focus1:hover {
+        transform: translateY(-8px);
+        background-color: yellow !important
+    }
+</style>
+
+
+<div>
+    <div>
+        @{
+            var startId = Model.CurrentTicket!.StarQuestionIndex;
+            var questionCount = Model.CurrentTicket.QuestionsCount;
+            var question = ViewBag.Question;
+
+            Ticket ticket = Model.CurrentTicket;
+
+            bool isAnswer = ViewBag.IsAnswer;
+            TicketQuestionAnswer? questionAnswer = null;
+
+            if (isAnswer)
+            {
+                questionAnswer = ViewBag.TicketAnswer;
+            }
+
+            for (int i = 0; i < questionCount; i++)
+            {
+                var questionIndex = ticket.StarQuestionIndex + i;
+                var ticketAnswer = ticket.TicketAnswers!.FirstOrDefault(q => q.QuestionIndex == questionIndex);
+                var bgClass = "background-color: bisque";
+
+                if (ticketAnswer != null)
+                {
+                    if (questionIndex == question.Id)
+                    {
+                        isAnswer = true;
+                        questionAnswer = ticketAnswer;
+                    }
+
+                    if (Model.IsExam)
+                    {
+                        bgClass = "background-color: mediumslateblue";
+                    }
+                    else
+                    {
+                        bgClass = ticketAnswer.IsCorrectAnswer ? "background-color: chartreuse" : "background-color: red";
+                    }
+                }
+                <a class="btn btn-outline-light focus1" style="@bgClass; color: black;" asp-area=""
+                   asp-controller="Question"
+                   asp-action="GetQuestion"
+                   asp-route-questionId="@(startId + i)"> @(i + 1) </a>
+            }
+        }
+
+        <div class="d-flex align-items-center justify-content-between">      
+            <div>
+                @{
+                    <br/>
+                    <br/>
+                    var imageLink = "";
+
+                    @if (question.Media.Exist)
+                    {
+                        imageLink = $"/Autotest_Images/{question.Media.Name}.png";
+                    }
+                    else
+                    {
+                        imageLink = "/img/car2.jpg";
+                    }
+
+                    <img alt="Question image" src="@imageLink"/>
+                    <br/>
+                    <br/>
+                }
+            </div>
+
+            <div class="w-25">
+
+                @if (isAnswer && !Model.IsExam)
+                {
+                    <p class="btn btn-info">@question.Id. @question.Description</p>
+                }
+
+            </div>
+
+      
+
+            <div>
+                
+                @if (Model.CurrentTicket.QuestionsCount == Model.CurrentTicket.TicketAnswers!.Count)
+                {
+                    <div class="text-center">           
+
+                        <a class="btn btn-info" asp-controller="Question" asp-action="Result">
+                        <h2>Test natijalari</h2></a>
+
+                        <form asp-controller="Question" asp-action="RemoveTicketAnswer">
+                            <button class="btn-outline-primary btn mt-3" type="submit" style="color: aliceblue">Testni qayta bajarish</button>
+                        </form>
+                        
+                        <form asp-controller="Question" asp-action="ShowTickets">
+                            <button class="btn-outline-primary btn mt-3" type="submit" style="color: antiquewhite">Testni biletlari</button>
+                        </form>
+
+                    </div>
+
+                }
+                 
+            </div>
+        </div>
+
+
+    </div>
+    
+    
+    @if (Model.IsExam)
+    {
+        <h1 style="color: crimson; background-color: black;">@question.Question</h1>
+    }
+    else
+    {
+        <h1 style="color: crimson; background-color: black;">@question.Id. @question.Question</h1>
+    }
+
+    <br/>
+
+
+    @for (int i = 0; i < question.Choices.Count; i++)
+    {
+        var bg = "background-color: black"; // chartreuse  //  red
+        var color = "color: aliceblue";
+
+        if (isAnswer)
+        {
+            if (Model.IsExam)
+            {
+                bg = "background-color: black";
+            }
+            else if (i == questionAnswer!.ChoiceIndex && !questionAnswer.IsCorrectAnswer)
+            {
+                bg = "background-color: red";
+                color = "color: black";
+            }
+            else if (question.Choices[i].Answer)
+            {
+                bg = "background-color: chartreuse";
+                color = "color: crimson";
+            }
+
+            <h5 class="btn btn-outline-info"  style="@bg; @color ">@(i + 1). @question.Choices[i].Text</h5>
+            <br/>
+        }
+        else
+        {
+            <a class="btn btn-outline-info" style="background-color: black; color: aliceblue"
+               asp-controller="Question" 
+               asp-action="GetQuestion"
+               asp-route-questionId="@question.Id" 
+               asp-route-choicesIndex="@i">@(i + 1). @question.Choices[i].Text</a>
+            <h5></h5>
+        }
+    }
+
+</div>
+

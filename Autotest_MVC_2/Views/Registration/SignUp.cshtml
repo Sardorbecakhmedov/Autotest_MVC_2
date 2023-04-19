@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model Auto_test.Library.Models.UserModels.SignUpUserModel
+
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+<style>
+
+    body h2 {
+        text-align: center;
+        color: chocolate
+    }
+    
+    form {
+        width: 50%;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color:gold
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"], textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 3px;
+        background-color: #fff;
+        box-shadow: inset 1px 1px 3px rgba(0,0,0,0.1);
+    }
+
+    input[type="file"] {
+        margin-bottom: 20px;
+    }
+
+    input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #3e8e41;
+    }
+
+    .error-message {
+        color: #ff0000;
+        margin-bottom: 10px;
+    }
+
+    span {
+        margin: 0;
+        padding-bottom: 5px;
+    }
+</style>
+
+@{
+    
+    if((TempData["UserNameHas"] != null && (bool)TempData["UserNameHas"]!)  && (TempData["UserEmail"] != null && (bool)TempData["UserEmail"]!))
+    {
+        <h5 class="btn-outline-danger" style="background-color: #ff0000; color: #ffffff; text-align: center"> Ushbu ISM va EMAIL yoki telefon NOMER band!  iltimos boshqa ISM VA EMAIL yoki TEL NOMER kiriting. </h5>
+    }
+    else if(TempData["UserNameHas"] != null && (bool)TempData["UserNameHas"]!)
+    {
+        <h5 class="btn-outline-danger" style="background-color: #ff0000; color: #ffffff; text-align: center"> Ushbu ISM band!  iltimos boshqa  ISM kiriting. </h5>
+    }
+    else if(TempData["UserEmail"] != null && (bool)TempData["UserEmail"]!)
+    {
+        <h5 class="btn-outline-danger" style="background-color: #ff0000; color: #ffffff; text-align: center"> Ushbu  EMAIL yoki telefon NOMER band!  iltimos boshqa  email yoki tel nomer kiritin. </h5>
+    }
+}
+
+<html>
+    <head>
+        <title>@ViewData["Title"]</title>
+    </head>
+    <body>
+        <h2>Yangi foydalanuvchini ro'yxatga olish</h2>
+        <br/>
+
+    <form asp-controller="Registration" asp-action="SignUp" method="post" enctype="multipart/form-data">
+
+        <label for="image">Rasmingizni yuklang:</label>
+        <input placeholder="Rasmingizni yuklang" type="file" id="image" name="ImagePath" asp-for="ImagePath"/>
+
+        <label for="password">Ismingizni kiriting:</label>
+        <input placeholder="Ismingizni kiriting" type="text" id="name" name="UserName" asp-for="UserName"/>
+        <span style="color: #ff0000" asp-validation-for="UserName"></span>
+
+        <label for="emailOrPhone">Telefon yoki E-mail:</label>
+        <input placeholder="Telefon yoki Email kirirting!" type="text" id="UserEmailOrPhone" name="UserEmailOrPhone" asp-for="UserEmailOrPhone"/>
+        <span style="color: #ff0000" asp-validation-for="UserEmailOrPhone"></span>
+
+        <label for="password">Parol:</label>
+        <input placeholder="Parolni kiriting" type="password" id="password" name="UserPassword" asp-for="UserPassword"/>
+        <span style="color: #ff0000" asp-validation-for="UserPassword"></span>
+
+        <input type="submit" value="Yuborish"/>
+
+    </form>
+    </body>
+</html>

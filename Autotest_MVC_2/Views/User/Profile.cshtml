@@ -1,0 +1,389 @@
+﻿@model Auto_test.Library.Models.UserModels.User
+
+
+<style>
+    html {
+    scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-image: url(../img/2023-mclaren-artura-101-1655218102.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.start {
+    background-color: rgba(0, 0, 0, 0.859);
+    color: whitesmoke;
+    position: relative;
+}
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 1340px;
+  margin: 0 auto;
+  padding: 15px 0;
+}
+
+.all-button {
+  margin: 30px 0;
+  font-weight: bold;
+  background-color: yellow;
+  color: black;
+  border: 2px solid transparent;
+  transition: 0.5s;
+  font-size: 20px;
+  padding: 13px 20px;
+  border-radius: 20px 0 20px 0;
+}
+    .all-button:hover {
+        background-color: transparent;
+        color: whitesmoke;
+        border: 2px solid yellow;
+        transition: 0.5s;
+    }
+
+.ucer {
+  display: flex;
+  flex-direction: column;
+}
+.ucer h1 {
+  font-size: 50px;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 10px;
+}
+    .ucer p {
+        margin: 0;
+        padding: 10px 0;
+        color: whitesmoke;
+    }
+    .ucer span {
+        color: whitesmoke;
+    }
+
+.ucer-img {
+  border-radius: 50%;
+  min-width: 300px;
+  min-height: 300px;
+  overflow: hidden;
+}
+.ucer-img img {
+  transition: 1s;
+  width: 305px;
+  height: 305px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.ucer-img img:hover {
+  transform: scale(1.1);
+  transition: 1s;
+}
+
+.start {
+  background-color: rgba(0, 0, 0, 0.859);
+  color: whitesmoke;
+  position: relative;
+}
+.start .card {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  padding-top: 30px;
+  padding-left: 30px;
+}
+.start .help {
+  position: absolute;
+  right: 0;
+  top: 100px;
+  cursor: pointer;
+  text-align: center;
+  width: 250px;
+}
+.start .help p {
+  font-size: 15px;
+}
+.start .help i {
+  font-size: 50px;
+}
+
+.vilets {
+  padding-top: 50px;
+}
+.vilets label {
+  display: flex;
+  align-items: center;
+}
+.vilets input {
+  margin-left: 10px;
+  width: 100px;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+
+.vilets form {
+  padding-bottom: 19px;
+}
+.vilets form span {
+  color: yellow;
+}
+.vilets form h1 {
+  font-size: 23px;
+}
+.vilets form .hafta {
+  color: yellow;
+  padding: 10px 0;
+}
+
+.vilet-animat {
+  color: yellow;
+  width: 400px;
+  animation-name: vilet-animat;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
+@@keyframes vilet-animat {
+  100% {
+    transform: translateX(150px);
+  }
+}
+
+@@media only screen and (max-width: 1200px) and (min-width: 900px) {
+  .container {
+    width: 900px !important;
+    margin: 0 auto !important;
+    padding: 0 15px !important;
+  }
+  .ucer-img {
+    border-radius: 50%;
+    min-width: 100px;
+    min-height: 100px;
+    overflow: hidden;
+  }
+  .ucer-img img {
+    width: 200px;
+    height: 200px;
+  }
+  .ucer h1 {
+    font-size: 30px;
+  }
+}
+@@media only screen and (max-width: 900px) {
+  .container {
+    width: 670px !important;
+    margin: 0 auto !important;
+    padding: 0 15px !important;
+  }
+  .start .help {
+    position: absolute;
+    right: 0px;
+    top: 170px;
+    cursor: pointer;
+    text-align: center;
+    width: 150px;
+  }
+  .start .help .all-button {
+    font-size: 10px;
+  }
+  .start .help i {
+    display: none;
+  }
+  .start .help .start {
+    padding-top: 200px;
+    width: 100%;
+  }
+  .vilets form .hafta {
+    padding: 27px 0;
+  }
+  .ucer h1 {
+    font-size: 30px;
+  }
+  .ucer-img {
+    border-radius: 50%;
+    min-width: 50px;
+    min-height: 50px;
+    overflow: hidden;
+  }
+  .ucer-img img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@@media only screen and (max-width: 1440px) {
+  .container {
+    width: 1140px;
+    margin: 0 auto;
+    padding: 15px 0;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
+footer a {
+    text-decoration: none;
+    color: #00aaff
+}
+
+.card {
+    background: url(../img/car1.jpg); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+    margin-top: -1rem;
+    background-position-y: center;
+}
+</style>
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="start">
+      <div class="container">
+        <div class="cards">
+          <div class="card">
+            <div class="ucer-img">
+              <img src="@Model.ImagePath" alt="" />
+            </div>
+
+            <div class="ucer">
+              <h1 style="color: lawngreen">User name : @Model.UserName</h1>
+              <p>Email : <span>@Model.UserEmailOrPhone</span></p>
+            </div>
+
+              <form asp-controller="Registration" asp-action="CheckHasUser" class="help">
+                  <label for="icon">
+                      <i class="fa-solid fa-user-gear fa-bounce"></i>
+                  </label>
+                  <button type="submit" class="all-button" id="icon">Malumotlarni yangilash</button>
+              </form>
+
+              <form asp-controller="Registration" asp-action="LogOut">
+                  <button type="submit" class="all-button">
+                      Tizimdan chiqish
+                  </button>
+              </form>
+
+          </div>
+        </div>
+
+        <div class="vilets container">
+          <h1 class="vilet-animat">Mening natijalrim</h1>
+
+            <form action="server.php">
+
+                <h1>Umumiy nechta bilet ishlangan : <span> @Model.IsCompletedTicketCount / @Model.UserTickets.Count</span></h1>
+                <h1>Oxirgi ishlagan bilet raqami : <span>№ @(Model.CurrentTicketIndex + 1)</span></h1>
+                <h1>Barcha to'g'ri javoblar soni : <span> @Model.TotalCorrectAnswerCount / @(Model.UserTickets.Count * 10)</span></h1>
+
+                <h1 class="hafta vilet-animat">Oxirgi bir haftada ishlagan biletlari :</h1>
+                
+                @{
+                    var lastWeekTickets = Model.UserTickets.Where(t => t.CreateDateTime > DateTime.Now.AddDays(-7));
+
+                    foreach (var ticket in lastWeekTickets)
+                    {
+                        <div>
+                            <h1>
+                                Bilet raqami : <span>№ @ticket.TicketIndex</span> ,
+                                To'g'ri javoblar soni :  <span> @ticket.CorrectAnswerCount </span> ,
+                                Savollar soni : <span>@ticket.QuestionsCount</span>
+                            </h1>
+                        </div>
+                    }
+                }
+
+            </form>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+                
+                
+        @*        
+<div>
+
+    <div class="start">
+        <div class="container">
+            <div class="cards">
+                <div class="card">
+                    <div class="ucer-img">
+                        <img src="@Model.ImagePath" alt=""/>
+                    </div>
+                    <div class="ucer">
+                        <h3>User name:  @Model.UserName</h3>
+                        <p>Email : <span>@Model.UserEmailOrPhone</span></p>
+                    </div>
+
+                    <form asp-controller="Registration" asp-action="CheckHasUser" class="help">
+                        <label for="icon">
+                            <i class="fa-solid fa-user-gear fa-bounce"></i>
+                        </label>
+                        <button type="submit" class="all-button" id="icon">Malumotlarni yangilash</button>
+                    </form>
+
+                    <form asp-controller="Registration" asp-action="LogOut">
+                        <button type="submit" class="all-button">
+                        Tizimdan chiqish
+                    </button>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="vilets" style="margin-left: 5rem;">
+                <h1 class="vilet-animat">Mening statistikam</h1>
+
+                <form >
+                    <h1>Umumiy nechta bilet ishlangan : <span> @Model.IsCompletedTicketCount / 70</span></h1>
+                    <h1>Oxirgi ishlagan bilet raqami : <span>№ @(Model.CurrentTicketIndex + 1)</span></h1>
+                    <h1>Barcha to'g'ri javoblar soni : <span> @Model.TotalCorrectAnswerCount  / 700</span></h1>
+                    <h1 class="hafta">Oxirgi bir haftada ishlagan biletlari :</h1>
+
+                    <div>
+                        <h1>
+                            Bilet <span>№ 2</span> , to'g'ri javob <span>5</span> savollar
+                            soni, <span>10</span>
+                        </h1>
+
+                        <h1>
+                            Bilet <span>№ 5</span> , to'g'ri javob <span>2</span> savollar
+                            soni, <span>10</span>
+                        </h1>
+
+                        <h1>
+                            Bilet <span>№ 3</span> , to'g'ri javob <span>7</span> savollar
+                            soni, <span>10</span>
+                        </h1>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+*@

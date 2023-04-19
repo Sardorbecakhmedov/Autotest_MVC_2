@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<style>
+
+    .colorr{
+        color: crimson;
+        text-align: center;
+    }
+    .color1 {
+        color: aliceblue;
+        text-align: center;
+    }
+
+    .all-button {
+        margin: 30px 0;
+        font-weight: bold;
+        background-color: yellow;
+        color: black;
+        border: 2px solid transparent;
+        transition: 0.5s;
+        font-size: 20px;
+        padding: 13px 20px;
+        border-radius: 20px 0 20px 0;
+    }
+
+    .all-button:hover {
+        background-color: transparent;
+        color: whitesmoke;
+        border: 2px solid yellow;
+        transition: 0.5s;
+    }
+    
+</style>
+
+
+
+
+<h2 class="colorr btn-outline-primary" style="color: aliceblue"><span style="color: crimson">
+     Dasturdan foydalanish uchun iltimos ro'yxatdan o'ting yoki tizimga kiring
+</span> </h2>
+<br/>
+<br/>
+
+
+<a class="all-button"style="color: crimson; text-decoration: none; " asp-area="" asp-controller="Registration" asp-action="SignIn">Tizimga kirish</a>
+<h1></h1>
+<h1></h1>
+<br/>
+<br/>
+<a class="all-button"style="color: crimson; text-decoration: none; " asp-area="" asp-controller="Registration" asp-action="SignUp">  Ro'yxatdan o'tish</a>
+
+
+<div class="d-flex">
+    <img
+        src="http://themes.potenzaglobalsolutions.com/html/cardealer/revolution/assets/e13ec-06-audi-s2.png"
+        alt=""
+        class="w-50 imgss"/>
+    <img
+        src="http://themes.potenzaglobalsolutions.com/html/cardealer/revolution/assets/4f45e-07-bmw-s2.png"
+        alt=""
+        class="w-50 imgss"/>
+
+    <!-- <img src="http://themes.potenzaglobalsolutions.com/html/cardealer/images/loader.gif" alt=""> -->
+</div>

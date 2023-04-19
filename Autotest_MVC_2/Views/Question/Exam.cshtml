@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewData["Title"] = "Exam";
+}
+
+@model Auto_test.Library.Models.UserModels.User
+
+<style>
+    .all-button {
+        size: A4;
+        text-align: center;
+        font-weight: bold;
+        background-color: red;
+        width: auto;
+        color: antiquewhite;
+        border: 3px solid transparent;
+        transition: 0.5s;
+    
+        padding: 13px 20px;
+        border-radius: 20px 0 20px 0;
+    }
+    .all-button:hover {
+        color: black;
+        padding: 13px 20px;
+        border: 3px solid red;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+    .all-button1 {
+        size: A4;
+        text-align: center;
+        font-weight: bold;
+        background-color: chartreuse;
+        color: crimson;
+        border: 3px solid transparent;
+        transition: 0.5s;
+        width: auto;
+        padding: 13px 20px;
+        border-radius: 20px 0 20px 0;
+    }
+    .all-button1:hover {
+        color: black;
+        padding: 13px 20px;
+        border: 3px solid red;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+
+    .colorr{
+         color: antiquewhite;
+         text-align: center;
+    }
+
+</style>
+
+<h1 class="colorr" style="color: antiquewhite"> Xurmatli <span style="color: lawngreen">@Model.UserName</span> </h1>
+<h3 class="colorr" style="color: antiquewhite">  <span style="color: crimson">Autotest_ASR</span>  imtihonini topshirishga tayyormisiz!</h3>
+
+<p style="color: antiquewhite; width: auto">Eslatma ushbu imtihonda siga 10 ta savol beriladi, 
+    Imtihondan o'tish uchun siz <span style="color: gold"> 8 tadan ortiq to'g'ri javob </span>  berishingiz kerak bo'ladi, 
+    Sizga imtihonda omad tilaymiz :)</p>
+
+@{
+    var randomNumber = new Random().Next(0, 71);
+
+    if (Model.ExamCurrentTicketIndex != -1)
+    {
+        <form 
+            asp-controller="Question" 
+            asp-action="StartTicket" 
+            asp-route-ticketIndex="@Model.ExamCurrentTicketIndex">
+            <button type="submit" class="all-button">Tugatilmagan testni davom etish </button>
+        </form>
+        <br/>
+
+        <form 
+            asp-controller="Question" 
+            asp-action="DeleteExamData">
+            <button type="submit" class="all-button">Imtihonni to'xtatish</button>
+        </form>
+        <br/>
+    }
+
+    <form 
+        asp-controller="Question" 
+        asp-action="StartTicket" 
+        asp-route-ticketIndex="@randomNumber">
+        <button type="submit" class="all-button1">Yangi test imtihoni</button>
+    </form>
+}
+
+
+<div class="d-flex">
+    <img
+        src="http://themes.potenzaglobalsolutions.com/html/cardealer/revolution/assets/e13ec-06-audi-s2.png"
+        alt=""
+        class="w-50 imgss"/>
+    <img
+        src="http://themes.potenzaglobalsolutions.com/html/cardealer/revolution/assets/4f45e-07-bmw-s2.png"
+        alt=""
+        class="w-50 imgss"/>
+
+    <!-- <img src="http://themes.potenzaglobalsolutions.com/html/cardealer/images/loader.gif" alt=""> -->
+</div>
