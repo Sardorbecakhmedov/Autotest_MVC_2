@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Autotest_MVC_2.Migrations
 {
-    public partial class First : Migration
+    public partial class firstMg : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,6 +15,7 @@ namespace Autotest_MVC_2.Migrations
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Language = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CurrentTicketIndex = table.Column<int>(type: "int", nullable: true),
                     IsCompletedTicketCount = table.Column<int>(type: "int", nullable: false),
                     TotalCorrectAnswerCount = table.Column<int>(type: "int", nullable: false),

@@ -15,7 +15,7 @@ public class UserController : Controller
         _questionService = questionService;
     }
 
-    public async Task<IActionResult> EditLanguage(string language = "uzlotin")
+  /*  public async Task<IActionResult> EditLanguage(string language = "uzlotin")
     {
         var user = _userService.GetCurrentUserAndTickets(HttpContext);
         await _questionService.GetAllQuestionsAsync(language);
@@ -27,7 +27,7 @@ public class UserController : Controller
         }
 
         return RedirectToAction("IsRegister", "Home");
-    }
+    }*/
 
 
     public IActionResult Profile()

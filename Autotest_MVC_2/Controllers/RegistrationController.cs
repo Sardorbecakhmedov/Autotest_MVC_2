@@ -70,6 +70,7 @@ public class RegistrationController : Controller
         {
             UserId = Guid.NewGuid().ToString(),
             UserName = signUpUserModel.UserName,
+            Language = "uzlotin",
             UserEmailOrPhone = signUpUserModel.UserEmailOrPhone,
             UserPassword = signUpUserModel.UserPassword,
             ImagePath = await SavePhotoPathAsync(signUpUserModel.ImagePath),

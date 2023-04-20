@@ -1,4 +1,5 @@
-﻿using Auto_test.Library.Models.Tickets;
+﻿using Auto_test.Library.Models.QuestionModels;
+using Auto_test.Library.Models.Tickets;
 
 
 namespace Auto_test.Library.Models.UserModels;
@@ -6,7 +7,8 @@ namespace Auto_test.Library.Models.UserModels;
 public class User : UserParent
 {
     public string? UserId { get; set; }
-    public string? ImagePath { get; set; }
+    public string? ImagePath { get; set; } = null!;
+    public string? Language { get; set; }
     public int? CurrentTicketIndex { get; set; }
     public int IsCompletedTicketCount { get; set; }
     public int TotalCorrectAnswerCount { get; set; }
@@ -14,4 +16,5 @@ public class User : UserParent
     public int ExamCurrentTicketIndex { get; set; }
     public virtual List<Ticket>? UserTickets { get; set; }
     public Ticket? CurrentTicket { get; set; }
+
 }

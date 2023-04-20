@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Autotest_MVC_2.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230417123222_First")]
-    partial class First
+    [Migration("20230420000602_firstMg")]
+    partial class firstMg
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -109,6 +109,9 @@ namespace Autotest_MVC_2.Migrations
 
                     b.Property<bool>("IsExam")
                         .HasColumnType("bit");
+
+                    b.Property<string>("Language")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TotalCorrectAnswerCount")
                         .HasColumnType("int");

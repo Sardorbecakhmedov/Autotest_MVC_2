@@ -205,35 +205,38 @@ body {
     }
     else
     {
-        <div class="d-flex align-items-center justify-content-between">      
-            <div class="start">
+        <div class="d-flex" style="text-align: center" >
 
-                <h1>Test Biletlari!</h1>
+            <div class="start">
+                <h1>Test Biletlari !</h1>
             </div>
 
-            <li class="nav-item language btn-outline-primary">
-                <ul class="navbar-text" style="list-style: none; display: flex; gap: 5px;">
-                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                        <div class="btn-group" role="group">
-                            <a class="nav-link text-dark dropdown-toggle  btn-outline-info" style="color: aliceblue" data-bs-toggle="dropdown" aria-expanded="false">Tilni o'zgartirish</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-language="uzlotin">O'zbek</a></li>
-                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-language="uzkiril">UzKiril</a></li>
-                                <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-language="rus">Ruscha</a></li>
-                            </ul>
-                        </div>
-                    </div>
+
+            <div class="btn-group;  start" role="group" aria-label="Button group with nested dropdown">
+
+                <a class="nav-link text-danger dropdown-toggle " style="color: aliceblue" data-bs-toggle="dropdown" aria-expanded="false">Savollar tilini o'zgartirish</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" asp-controller="Question" asp-action="EditLanguage" asp-route-language="uzlotin">O'zbek</a></li>
+                    <li><a class="dropdown-item" asp-controller="Question" asp-action="EditLanguage" asp-route-language="uzkiril">UzKiril</a></li>
+                    <li><a class="dropdown-item" asp-controller="Question" asp-action="EditLanguage" asp-route-language="rus">Ruscha</a></li>
                 </ul>
-            </li>
+
+            </div>
+
         </div>
+
+      
 
         <div class="cards">
             @foreach (var ticket in Model.UserTickets)
             {
                 var bg = "";
+                var isCompleted = false;
+
                 if (ticket.TicketAnswers.Count >= 10)
                 {
                     bg = "lawngreen";
+                    isCompleted = true;
                 }
                 else
                 {
@@ -252,6 +255,15 @@ body {
                         {
                             <h4>@ticket.CorrectAnswerCount / @ticket.QuestionsCount</h4>
                             <p>@ticket.CreateDateTime.ToString("f")</p>
+
+                            if (isCompleted)
+                            {
+                                <i>Yakunlangan</i>
+                            }
+                            else
+                            {
+                                <u>Yakunlanmagan</u>
+                            }
                         }
 
                         <form

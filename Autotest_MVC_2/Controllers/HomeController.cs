@@ -16,7 +16,7 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index(string language = "uzlotin")
     {
-        await _questionService.GetAllQuestionsAsync(language);
+        //await _questionService.GetAllQuestionsAsync(language);
         return View();
     }
 

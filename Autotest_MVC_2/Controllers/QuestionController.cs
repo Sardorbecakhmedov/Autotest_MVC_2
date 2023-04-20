@@ -1,8 +1,11 @@
-﻿using Auto_test.Library.Models.Tickets;
+﻿using Auto_test.Library.Models.QuestionModels;
+using Auto_test.Library.Models.Tickets;
 using Auto_test.Library.Models.UserModels;
 using Autotest_MVC_2.Services.QuestionServices;
 using Autotest_MVC_2.Services.UserServices;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Autotest_MVC_2.Controllers;
 
@@ -12,10 +15,11 @@ public class QuestionController : Controller
 
     private readonly QuestionService _questionService;
 
+
     public QuestionController(UserService userService, QuestionService questionService)
     {
         _userService = userService;
-        _questionService = questionService;
+        _questionService = questionService; ;
     }
 
     public IActionResult ShowTickets()
@@ -78,7 +82,7 @@ public class QuestionController : Controller
             nameof(GetQuestion), new { questionId = user.CurrentTicket.StarQuestionIndex });
     }
 
-    public IActionResult GetQuestion(int questionId, int? choicesIndex = null)
+    public async Task<IActionResult> GetQuestion(int questionId, int? choicesIndex = null)
     {
         var user = _userService.GetCurrentUserAndTickets(HttpContext);
 
@@ -88,15 +92,18 @@ public class QuestionController : Controller
         if (questionId > user.CurrentTicketIndex * 10 + 10)
             return RedirectToAction(nameof(Result));
 
+        if (user.Language is "rus" or "uzkiril")
+            await _questionService.GetAllQuestionsAsync(user.Language!);
+
         var question = _questionService.Questions!.FirstOrDefault(t => t.Id == questionId);
 
         if (question == null)
-            RedirectToAction("ShowTickets", new { language = "uzlotin" });
+            RedirectToAction("ShowTickets");
 
         ViewBag.Question = question!;
         ViewBag.IsAnswer = choicesIndex != null;
 
-        if (choicesIndex != null)
+        if (choicesIndex is not null)
         {
             var ticketAnswer = new TicketQuestionAnswer
             {
@@ -118,7 +125,7 @@ public class QuestionController : Controller
         if (user.CurrentTicket!.QuestionsCount == user.CurrentTicket.TicketAnswers!.Count)
         {
             user.IsCompletedTicketCount++;
-            user.TotalCorrectAnswerCount += user.CurrentTicket.TicketAnswers.Count(a=>a.IsCorrectAnswer == true);
+            user.TotalCorrectAnswerCount += user.CurrentTicket.TicketAnswers.Count(a=> a.IsCorrectAnswer);
             _userService.DbContext.SaveChanges();
         }
 
@@ -170,4 +177,26 @@ public class QuestionController : Controller
         return RedirectToAction(
             nameof(GetQuestion), new { questionId = ticket.StarQuestionIndex });
     }
+
+    public IActionResult EditUserQuestionLanguage()
+    {
+
+        return RedirectToAction(nameof(ShowTickets));
+    }
+
+
+
+    public async Task<IActionResult> EditLanguage(string language)
+    {
+        var user = _userService.GetCurrentUser(HttpContext);
+
+        if (user == null)
+            return RedirectToAction("SignUp", "Registration");
+
+        user.Language = language;
+        _userService.DbContext.SaveChanges();
+
+        return RedirectToAction(nameof(ShowTickets));
+    }
+
 }

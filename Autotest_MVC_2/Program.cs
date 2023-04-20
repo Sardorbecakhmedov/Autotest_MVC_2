@@ -1,12 +1,8 @@
-using Auto_test.Library.Models.Tickets;
-using Auto_test.Library.Models.UserModels;
-using Autotest_MVC_2.Controllers;
 using Autotest_MVC_2.DataDB;
 using Autotest_MVC_2.Services.QuestionServices;
 using Autotest_MVC_2.Services.UserServices;
 using Serilog;
 
-using Microsoft.EntityFrameworkCore;
 
 namespace Autotest_MVC_2;
 
@@ -27,7 +23,10 @@ public class Program
         builder.Services.AddDbContext<AppDbContext>();
 
         builder.Services.AddTransient<UserService>();
+
         builder.Services.AddTransient<QuestionService>();
+
+
 
 
         var app = builder.Build();

@@ -108,6 +108,9 @@ namespace Autotest_MVC_2.Migrations
                     b.Property<bool>("IsExam")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Language")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("TotalCorrectAnswerCount")
                         .HasColumnType("int");
 

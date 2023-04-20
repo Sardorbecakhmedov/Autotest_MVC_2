@@ -5,7 +5,7 @@
 
 @if (!Model.IsExam)
 {
-    <h1 class="text-center; text-light" >Bilet raqami:  @(Model.CurrentTicketIndex + 1)</h1>
+    <h1 class="text-center; text-light" >Bilet raqami:  <span style="color:chartreuse"> @(Model.CurrentTicketIndex + 1)</span></h1>
 }
 
 <style>
@@ -39,7 +39,7 @@
 
             for (int i = 0; i < questionCount; i++)
             {
-                var questionIndex = ticket.StarQuestionIndex + i;
+                var questionIndex =  startId + i;
                 var ticketAnswer = ticket.TicketAnswers!.FirstOrDefault(q => q.QuestionIndex == questionIndex);
                 var bgClass = "background-color: bisque";
 
