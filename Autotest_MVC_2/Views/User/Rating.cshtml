@@ -28,25 +28,31 @@
 </style>
 
 
-@{
-    var users = ViewBag.Users;
-    <table >
-        <thead>
-        <tr class="btn-outline-primary">
-            <th>Foydalanuvchi</th>
-            <th>Jami to'g'ri ishlagan javoblari soni</th>
-            <th>Umumiy savollar soni</th>
-        </tr>
-        </thead>
+
+<table >
+    <thead>
+    <tr class="btn-outline-primary">
+        <th>№ </th>
+        <th>Foydalanuvchi</th>
+        <th>Jami to'g'ri ishlagan javoblari soni</th>
+        <th>Umumiy savollar soni</th>
+    </tr>
+    </thead>
+    @{
+        var users = ViewBag.Users;
+
+        int count = 1;
 
         @foreach (var user in users)
         { 
             <tbody style="color: antiquewhite">
+            <td>@(count++)</td>
             <td>@user.UserName</td>
             <td>@user.TotalCorrectAnswerCount</td>
             <td>700</td>
             </tbody>
         }
-       
-    </table>
-}
+    }
+   
+</table>
+

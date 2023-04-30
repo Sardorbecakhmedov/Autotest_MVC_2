@@ -24,7 +24,7 @@ public  class UserService
         DbContext.SaveChanges();
     }
 
-    public  User? GetCurrentUser(HttpContext context)
+    public User? GetCurrentUser(HttpContext context)
     {
         if (string.IsNullOrEmpty(context.Session.GetString(UserIdCookieKey)))
             return null;

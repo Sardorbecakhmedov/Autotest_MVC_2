@@ -1,6 +1,7 @@
 using Autotest_MVC_2.DataDB;
 using Autotest_MVC_2.Services.QuestionServices;
 using Autotest_MVC_2.Services.UserServices;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 
@@ -15,18 +16,19 @@ public class Program
 
         // Add services to builder.Services.AddControllersWithViews();  // Добавляем сервисы в builder.Services.AddControllersWithViews()
         builder.Services.AddControllersWithViews();
+
         builder.Services.AddSession();
         builder.Services.AddMemoryCache();
         
         builder.Logging.AddSerilog(logger);
 
-        builder.Services.AddDbContext<AppDbContext>();
+        //builder.Services.AddDbContext<AppDbContext>();
+
+        builder.Services.AddTransient<AppDbContext>();
 
         builder.Services.AddTransient<UserService>();
 
         builder.Services.AddTransient<QuestionService>();
-
-
 
 
         var app = builder.Build();
@@ -42,12 +44,13 @@ public class Program
             app.UseHsts();
         }
 
-        //  app.Services.GetRequiredService<AppDbContext>().Database.Migrate();
+       // app.Services.GetRequiredService<AppDbContext>().Database.Migrate();
 
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();
         app.UseAuthorization();
+
         app.UseSession();
 
         app.MapControllerRoute(

@@ -13,9 +13,11 @@ public class AppDbContext : DbContext
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        string path = @"Server = (localdb)\MSSQLLocalDB;" +
-                        "Database = users;" +
-                        "Trusted_Connection = True;";
+      //  string path = @"server=sql.bsite.net\MSSQL2016;Database=sardorbek2015_AutotestDb;user=sardorbek2015_AutotestDb;password=s89251411965";
+        string path = @"Server=SQL8005.site4now.net;
+                        Database=db_a986c3_autotest7;
+                        User=db_a986c3_autotest7_admin;
+                        Password=s89251411965";
 
         optionsBuilder.UseSqlServer(path);
     }
