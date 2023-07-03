@@ -20,7 +20,7 @@ public class QuestionService
 
     public async Task GetAllQuestionsAsync(string language = "uzlotin")
     {
-        var filePath = $@"C:\C#\WepProjects\Autotest_MVC_2\Auto_test.Library\Models\QuestionsJson\{language}.json";
+        var filePath = $@"..\Auto_test.Library\Models\QuestionsJson\{language}.json";
 
         using var streamReader = new StreamReader(filePath);
         var jsonString = await streamReader.ReadToEndAsync();

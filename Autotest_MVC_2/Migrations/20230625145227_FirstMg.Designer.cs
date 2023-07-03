@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Autotest_MVC_2.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230429114853_nom")]
-    partial class nom
+    [Migration("20230625145227_FirstMg")]
+    partial class FirstMg
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

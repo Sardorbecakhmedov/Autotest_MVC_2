@@ -10,17 +10,17 @@ public class AppDbContext : DbContext
     public DbSet<Ticket>? Tickets { get; set; }
     public DbSet<TicketQuestionAnswer>? TicketQuestionAnswers { get; set; }
 
-    
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    { }
+/*
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-      //  string path = @"server=sql.bsite.net\MSSQL2016;Database=sardorbek2015_AutotestDb;user=sardorbek2015_AutotestDb;password=s89251411965";
-        string path = @"Server=SQL8005.site4now.net;
-                        Database=db_a986c3_autotest7;
-                        User=db_a986c3_autotest7_admin;
-                        Password=s89251411965";
+        string path = "Server = (localdb)\\MSSQLLocalDB;" +
+                      "Database = AutoTest_db;" +
+                      "Trusted_Connection = True;";
 
         optionsBuilder.UseSqlServer(path);
-    }
+    }*/
 }
 
 

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Autotest_MVC_2.Migrations
 {
-    public partial class nom : Migration
+    public partial class FirstMg : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

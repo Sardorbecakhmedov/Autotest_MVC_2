@@ -12,17 +12,27 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        
+        // Xatolarni topib faylga yozadi
         var logger = new LoggerConfiguration().WriteTo.File("Error.txt").CreateLogger();
+        builder.Logging.AddSerilog(logger);
 
         // Add services to builder.Services.AddControllersWithViews();  // Добавляем сервисы в builder.Services.AddControllersWithViews()
         builder.Services.AddControllersWithViews();
 
         builder.Services.AddSession();
         builder.Services.AddMemoryCache();
-        
-        builder.Logging.AddSerilog(logger);
 
-        //builder.Services.AddDbContext<AppDbContext>();
+        // Xatolarni topib faylga yozadi
+
+        builder.Services.AddDbContext<AppDbContext>(config =>
+        {
+            string path = "Server = (localdb)\\MSSQLLocalDB;" +
+                          "Database = AutoTest_db;" +
+                          "Trusted_Connection = True;";
+
+            config.UseSqlServer(path);
+        });
 
         builder.Services.AddTransient<AppDbContext>();
 
@@ -44,7 +54,7 @@ public class Program
             app.UseHsts();
         }
 
-       // app.Services.GetRequiredService<AppDbContext>().Database.Migrate();
+        // app.Services.GetRequiredService<AppDbContext>().Database.Migrate();
 
         app.UseHttpsRedirection();
         app.UseStaticFiles();
